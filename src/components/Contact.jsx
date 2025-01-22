@@ -30,16 +30,17 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
-
+  
     emailjs
       .send(
         import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
         import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
         {
           from_name: form.name,
-          to_name: "JavaScript Mastery",
+          to_name: "Daivik Vennela",
           from_email: form.email,
-          to_email: "sujata@jsmastery.pro",
+          to_email: "dvennela@berkeley.edu",
+          organization: form.organization, // Add this line
           message: form.message,
         },
         import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
@@ -52,6 +53,7 @@ const Contact = () => {
           setForm({
             name: "",
             email: "",
+            organization: "",
             message: "",
           });
         },
@@ -72,7 +74,8 @@ const Contact = () => {
         variants={slideIn("left", "tween", 0.2, 1)}
         className='flex-[0.75] bg-black-100 p-8 rounded-2xl'
       >
-        <p className={styles.sectionSubText}>Get in touch</p>
+        {/* Header of the contact page go to styles to change fonts */}
+        <p className={styles.sectionSubText}>Reach out to me...</p>
         <h3 className={styles.sectionHeadText}>Contact.</h3>
 
         <form
@@ -87,7 +90,7 @@ const Contact = () => {
               name='name'
               value={form.name}
               onChange={handleChange}
-              placeholder="What's your good name?"
+              placeholder="Full Name?"
               className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
             />
           </label>
@@ -98,10 +101,21 @@ const Contact = () => {
               name='email'
               value={form.email}
               onChange={handleChange}
-              placeholder="What's your web address?"
+              placeholder="Email address?"
               className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
             />
           </label>
+          <label className='flex flex-col'>
+        <span className='text-white font-medium mb-4'>Organization</span>
+        <input
+          type='text'
+          name='organization'
+          value={form.organization}
+          onChange={handleChange}
+          placeholder="(Optional)"
+          className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
+        />
+      </label>
           <label className='flex flex-col'>
             <span className='text-white font-medium mb-4'>Your Message</span>
             <textarea

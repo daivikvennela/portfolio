@@ -8,9 +8,15 @@ import Works from "./Works";
 import Feedbacks from "./Feedbacks";
 import Contact from "./Contact";
 import CanvasLoader from "./Loader";
+import dlogo from './dlogo.svg';
+import dlogoh from './dlogoh.png';
+
+
 
 
 export {
+  dlogoh,
+  dlogo,
   Hero,
   Navbar,
   About,

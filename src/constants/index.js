@@ -113,11 +113,22 @@ const technologies = [
     icon: docker,
   },
 ];
-
+{/* Just changed the icon to standford and the import asset to stanford  */}
 const experiences = [
   {
-    title: "React.js Developer",
-    company_name: "Starbucks",
+    title: "Research Intern",
+    company_name: "Stanford",
+    icon: starbucks,
+    iconBg: "#383E56",
+    date: "March 2020 - April 2021",
+    points: [
+      "Researched Virtual Reality in the context of medicine, military and education; presented to program alumni; Later delivered TedX talk: “How Virtual Reality Can Save Lives” which used this research and applied it to a broader more interdisciplinary context",
+     
+    ],
+  },
+  {
+    title: "Research Intern",
+    company_name: "Stanford",
     icon: starbucks,
     iconBg: "#383E56",
     date: "March 2020 - April 2021",
