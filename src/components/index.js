@@ -9,10 +9,8 @@ import Feedbacks from "./Feedbacks";
 import Contact from "./Contact";
 import CanvasLoader from "./Loader";
 import dlogo from './dlogo.svg';
+
 import dlogoh from './dlogoh.png';
-
-
-
 
 export {
   dlogoh,
