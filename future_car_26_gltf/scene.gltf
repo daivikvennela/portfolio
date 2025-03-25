@@ -1,0 +1,637 @@
+{
+  "accessors": [
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 40287,
+      "max": [
+        261.486572265625,
+        102.44271850585938,
+        124.76880645751953
+      ],
+      "min": [
+        -216.91249084472656,
+        0.07698982954025269,
+        -124.7688980102539
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 483444,
+      "componentType": 5126,
+      "count": 40287,
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 0,
+      "componentType": 5125,
+      "count": 191196,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 966888,
+      "componentType": 5126,
+      "count": 1174,
+      "max": [
+        103.94181060791016,
+        104.11336517333984,
+        95.35733032226563
+      ],
+      "min": [
+        -119.0037841796875,
+        73.90859985351563,
+        -95.3573226928711
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 980976,
+      "componentType": 5126,
+      "count": 1174,
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 764784,
+      "componentType": 5125,
+      "count": 5400,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 995064,
+      "componentType": 5126,
+      "count": 258,
+      "max": [
+        251.10015869140625,
+        64.25182342529297,
+        89.13163757324219
+      ],
+      "min": [
+        -210.9892578125,
+        41.40496063232422,
+        -89.13138580322266
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 998160,
+      "componentType": 5126,
+      "count": 258,
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 786384,
+      "componentType": 5125,
+      "count": 768,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 1001256,
+      "componentType": 5126,
+      "count": 1608,
+      "max": [
+        253.4000701904297,
+        89.54790496826172,
+        95.8572006225586
+      ],
+      "min": [
+        -212.31790161132813,
+        39.4940185546875,
+        -95.85719299316406
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 1020552,
+      "componentType": 5126,
+      "count": 1608,
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 789456,
+      "componentType": 5125,
+      "count": 6432,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 1039848,
+      "componentType": 5126,
+      "count": 6,
+      "max": [
+        -19.355642318725586,
+        7.122226238250732,
+        95.32946014404297
+      ],
+      "min": [
+        -20.783863067626953,
+        6.972879409790039,
+        -95.73477935791016
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 1039920,
+      "componentType": 5126,
+      "count": 6,
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 815184,
+      "componentType": 5125,
+      "count": 6,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 1039992,
+      "componentType": 5126,
+      "count": 7072,
+      "max": [
+        204.86843872070313,
+        80.20184326171875,
+        125.20012664794922
+      ],
+      "min": [
+        -91.45285034179688,
+        7.648162364959717,
+        -125.20012664794922
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 1124856,
+      "componentType": 5126,
+      "count": 7072,
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 815208,
+      "componentType": 5125,
+      "count": 42240,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 1209720,
+      "componentType": 5126,
+      "count": 27680,
+      "max": [
+        202.91265869140625,
+        77.2569351196289,
+        125.70012664794922
+      ],
+      "min": [
+        -88.5079345703125,
+        9.953734397888184,
+        -125.70012664794922
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 1541880,
+      "componentType": 5126,
+      "count": 27680,
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 984168,
+      "componentType": 5125,
+      "count": 132000,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 1874040,
+      "componentType": 5126,
+      "count": 4842,
+      "max": [
+        264.38055419921875,
+        36.363094329833984,
+        106.75567626953125
+      ],
+      "min": [
+        -219.88206481933594,
+        3.7339954376220703,
+        -106.76029968261719
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 1932144,
+      "componentType": 5126,
+      "count": 4842,
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 1512168,
+      "componentType": 5125,
+      "count": 28032,
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "generator": "fab-model-conversion",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 1624296,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 1990248,
+      "byteOffset": 1624296,
+      "byteStride": 12,
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 3614544,
+      "uri": "scene.bin"
+    }
+  ],
+  "extensionsUsed": [
+    "KHR_materials_specular",
+    "KHR_materials_emissive_strength"
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "name": "Body",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.5771793943636894,
+          0.5771793943636894,
+          0.5771793943636894,
+          1.0
+        ],
+        "metallicFactor": 0.7664085257879785,
+        "roughnessFactor": 0.38403880461440687
+      }
+    },
+    {
+      "doubleSided": true,
+      "extensions": {
+        "KHR_materials_specular": {
+          "specularFactor": 0.8574489355912098
+        }
+      },
+      "name": "Glass",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "metallicFactor": 0.6935761979453934,
+        "roughnessFactor": 0.06843205062987161
+      }
+    },
+    {
+      "doubleSided": true,
+      "emissiveFactor": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "extensions": {
+        "KHR_materials_emissive_strength": {
+          "emissiveStrength": 10
+        }
+      },
+      "name": "Headlight",
+      "pbrMetallicRoughness": {
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.6
+      }
+    },
+    {
+      "doubleSided": true,
+      "name": "Fittings",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.527359772669052,
+          0.527359772669052,
+          0.527359772669052,
+          1.0
+        ],
+        "metallicFactor": 0.7057149192524909,
+        "roughnessFactor": 0.28085967350407803
+      }
+    },
+    {
+      "doubleSided": true,
+      "name": "Body_0",
+      "pbrMetallicRoughness": {
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.6
+      }
+    },
+    {
+      "doubleSided": true,
+      "name": "Tyre",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.0031511572630787852,
+          0.0031511572630787852,
+          0.0031511572630787852,
+          1.0
+        ],
+        "metallicFactor": 0.6510906733705522,
+        "roughnessFactor": 0.3961775259215044
+      }
+    },
+    {
+      "doubleSided": true,
+      "name": "Rims",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.3113642400293012,
+          0.3113642400293012,
+          0.3113642400293012,
+          1.0
+        ],
+        "metallicFactor": 0.6571600340241008,
+        "roughnessFactor": 0.33548391938601685
+      }
+    },
+    {
+      "doubleSided": true,
+      "name": "Fender",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.527359772669052,
+          0.527359772669052,
+          0.527359772669052,
+          1.0
+        ],
+        "metallicFactor": 0.7299923618666859,
+        "roughnessFactor": 0.6
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Future Car 26_Body_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0
+          },
+          "indices": 2,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Future Car 26_Glass_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 4,
+            "POSITION": 3
+          },
+          "indices": 5,
+          "material": 1,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Future Car 26_Headlight_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 7,
+            "POSITION": 6
+          },
+          "indices": 8,
+          "material": 2,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Future Car 26_Fittings_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 10,
+            "POSITION": 9
+          },
+          "indices": 11,
+          "material": 3,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Future Car 26_Body_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 13,
+            "POSITION": 12
+          },
+          "indices": 14,
+          "material": 4,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Future Car 26_Tyre_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 16,
+            "POSITION": 15
+          },
+          "indices": 17,
+          "material": 5,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Future Car 26_Rims_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 19,
+            "POSITION": 18
+          },
+          "indices": 20,
+          "material": 6,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Future Car 26_Fender_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 22,
+            "POSITION": 21
+          },
+          "indices": 23,
+          "material": 7,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.220446049250313e-16,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        2.220446049250313e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "Sketchfab_model"
+    },
+    {
+      "children": [
+        2
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        -1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "6b223eadca4641f9939862a87b2fa806.fbx"
+    },
+    {
+      "children": [
+        3
+      ],
+      "name": "RootNode"
+    },
+    {
+      "children": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "matrix": [
+        4.371139006309477e-07,
+        0.0,
+        9.99999999999999,
+        0.0,
+        -4.371139000186238e-07,
+        9.99999999999999,
+        1.9106856206746602e-14,
+        0.0,
+        -9.99999999999998,
+        -4.371139000186243e-07,
+        4.371139006309477e-07,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "Future Car 26"
+    },
+    {
+      "mesh": 0,
+      "name": "Future Car 26_Body_0"
+    },
+    {
+      "mesh": 1,
+      "name": "Future Car 26_Glass_0"
+    },
+    {
+      "mesh": 2,
+      "name": "Future Car 26_Headlight_0"
+    },
+    {
+      "mesh": 3,
+      "name": "Future Car 26_Fittings_0"
+    },
+    {
+      "mesh": 4,
+      "name": "Future Car 26_Body_0"
+    },
+    {
+      "mesh": 5,
+      "name": "Future Car 26_Tyre_0"
+    },
+    {
+      "mesh": 6,
+      "name": "Future Car 26_Rims_0"
+    },
+    {
+      "mesh": 7,
+      "name": "Future Car 26_Fender_0"
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Sketchfab_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ]
+}
