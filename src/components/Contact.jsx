@@ -46,22 +46,40 @@ const Contact = () => {
     const templateId = import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID;
     const publicKey = import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY;
 
-    const missing = [];
-    if (!serviceId) missing.push("VITE_APP_EMAILJS_SERVICE_ID");
-    if (!templateId) missing.push("VITE_APP_EMAILJS_TEMPLATE_ID");
-    if (!publicKey) missing.push("VITE_APP_EMAILJS_PUBLIC_KEY");
+    // Check if values are missing or are placeholders
+    const isPlaceholder = (value) => {
+      if (!value) return true;
+      const lower = value.toLowerCase();
+      return lower.includes('your_') || lower.includes('placeholder') || lower.includes('example');
+    };
 
-    if (missing.length > 0) {
+    const missing = [];
+    const hasInvalidConfig = 
+      !serviceId || !templateId || !publicKey ||
+      isPlaceholder(serviceId) || isPlaceholder(templateId) || isPlaceholder(publicKey);
+
+    if (hasInvalidConfig) {
+      if (!serviceId || isPlaceholder(serviceId)) missing.push("VITE_APP_EMAILJS_SERVICE_ID");
+      if (!templateId || isPlaceholder(templateId)) missing.push("VITE_APP_EMAILJS_TEMPLATE_ID");
+      if (!publicKey || isPlaceholder(publicKey)) missing.push("VITE_APP_EMAILJS_PUBLIC_KEY");
+      
       setLoading(false);
-      console.error("EmailJS configuration missing:", missing.join(", "));
+      // Silently use mailto fallback without showing error
       const subject = encodeURIComponent("Portfolio Contact Message");
       const body = encodeURIComponent(
         `Name: ${form.name}\nEmail: ${form.email}\nOrganization: ${form.organization || "N/A"}\n\nMessage:\n${form.message}`
       );
-      alert(
-        `Email configuration error. Missing: ${missing.join(", ")}. Opening your email client as a fallback...`
-      );
       window.location.href = `mailto:dvennela@berkeley.edu?subject=${subject}&body=${body}`;
+      
+      // Reset form after opening email client
+      setTimeout(() => {
+        setForm({
+          name: "",
+          email: "",
+          organization: "",
+          message: "",
+        });
+      }, 100);
       return;
     }
 
@@ -135,28 +153,24 @@ const Contact = () => {
             suggestions.push("Try again later");
           }
 
-          const shouldFallback =
-            rawText.includes("Invalid Public Key") ||
-            rawText.toLowerCase().includes("public key") ||
-            error?.status === 0 ||
-            (error?.status >= 500);
-
+          // Always fallback to mailto for any EmailJS error
           const subject = encodeURIComponent("Portfolio Contact Message");
           const body = encodeURIComponent(
             `Name: ${form.name}\nEmail: ${form.email}\nOrganization: ${form.organization || "N/A"}\n\nMessage:\n${form.message}`
           );
 
-          const details = rawText ? `\nDetails: ${rawText}` : "";
-          const hint = suggestions.length ? `\nHint: ${suggestions.join("; ")}` : "";
-          const fallbackNote = shouldFallback
-            ? `\nFallback: Opening your email client now...`
-            : "";
-
-          alert(`${userMessage}${hint}${details}${fallbackNote}`);
-
-          if (shouldFallback) {
-            window.location.href = `mailto:dvennela@berkeley.edu?subject=${subject}&body=${body}`;
-          }
+          // Silently use mailto fallback when EmailJS fails - no error shown to user
+          window.location.href = `mailto:dvennela@berkeley.edu?subject=${subject}&body=${body}`;
+          
+          // Reset form after opening email client
+          setTimeout(() => {
+            setForm({
+              name: "",
+              email: "",
+              organization: "",
+              message: "",
+            });
+          }, 100);
         }
       );
   };
