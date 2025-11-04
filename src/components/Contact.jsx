@@ -12,6 +12,7 @@ const Contact = () => {
   const [form, setForm] = useState({
     name: "",
     email: "",
+    organization: "",
     message: "",
   });
 
@@ -29,21 +30,54 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // basic form validation
+    if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
+      alert("Please fill out your name, email, and message.");
+      return;
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (form.email && !emailRegex.test(form.email)) {
+      alert("Please enter a valid email address.");
+      return;
+    }
     setLoading(true);
   
+    const serviceId = import.meta.env.VITE_APP_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY;
+
+    const missing = [];
+    if (!serviceId) missing.push("VITE_APP_EMAILJS_SERVICE_ID");
+    if (!templateId) missing.push("VITE_APP_EMAILJS_TEMPLATE_ID");
+    if (!publicKey) missing.push("VITE_APP_EMAILJS_PUBLIC_KEY");
+
+    if (missing.length > 0) {
+      setLoading(false);
+      console.error("EmailJS configuration missing:", missing.join(", "));
+      const subject = encodeURIComponent("Portfolio Contact Message");
+      const body = encodeURIComponent(
+        `Name: ${form.name}\nEmail: ${form.email}\nOrganization: ${form.organization || "N/A"}\n\nMessage:\n${form.message}`
+      );
+      alert(
+        `Email configuration error. Missing: ${missing.join(", ")}. Opening your email client as a fallback...`
+      );
+      window.location.href = `mailto:dvennela@berkeley.edu?subject=${subject}&body=${body}`;
+      return;
+    }
+
     emailjs
       .send(
-        import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
+        serviceId,
+        templateId,
         {
           from_name: form.name,
           to_name: "Daivik Vennela",
           from_email: form.email,
           to_email: "dvennela@berkeley.edu",
-          organization: form.organization, // Add this line
+          organization: form.organization,
           message: form.message,
         },
-        import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
+        publicKey
       )
       .then(
         () => {
@@ -59,9 +93,70 @@ const Contact = () => {
         },
         (error) => {
           setLoading(false);
-          console.error(error);
 
-          alert("Ahh, something went wrong. Please try again.");
+          // Log a structured error for debugging
+          console.groupCollapsed("Email send failed");
+          console.error("EmailJS error object:", error);
+          console.log("Service ID:", serviceId);
+          console.log("Template ID:", templateId);
+          console.log("Has Public Key:", Boolean(publicKey));
+          console.log("Payload:", {
+            from_name: form.name,
+            from_email: form.email,
+            to_name: "Daivik Vennela",
+            to_email: "dvennela@berkeley.edu",
+            organization: form.organization,
+            message: form.message,
+          });
+          console.groupEnd();
+
+          // Map known EmailJS error texts to clearer messages
+          const rawText = error?.text || "";
+          let userMessage = "We couldn't send your message.";
+          let suggestions = [];
+
+          if (rawText.includes("Invalid service ID")) {
+            userMessage = "Email service is not configured correctly (invalid service ID).";
+            suggestions.push("Check VITE_APP_EMAILJS_SERVICE_ID in .env");
+          } else if (rawText.includes("Invalid template ID")) {
+            userMessage = "Email template is not configured correctly (invalid template ID).";
+            suggestions.push("Check VITE_APP_EMAILJS_TEMPLATE_ID in .env");
+          } else if (rawText.includes("Invalid Public Key") || rawText.includes("public key")) {
+            userMessage = "Public API key appears invalid.";
+            suggestions.push("Check VITE_APP_EMAILJS_PUBLIC_KEY in .env");
+          } else if (rawText.toLowerCase().includes("rate")) {
+            userMessage = "You're being rate limited by EmailJS.";
+            suggestions.push("Wait a minute and try again");
+          } else if (error?.status === 0) {
+            userMessage = "Network error while contacting the email service.";
+            suggestions.push("Check your internet connection");
+          } else if (error?.status >= 500) {
+            userMessage = "Email service is currently unavailable (server error).";
+            suggestions.push("Try again later");
+          }
+
+          const shouldFallback =
+            rawText.includes("Invalid Public Key") ||
+            rawText.toLowerCase().includes("public key") ||
+            error?.status === 0 ||
+            (error?.status >= 500);
+
+          const subject = encodeURIComponent("Portfolio Contact Message");
+          const body = encodeURIComponent(
+            `Name: ${form.name}\nEmail: ${form.email}\nOrganization: ${form.organization || "N/A"}\n\nMessage:\n${form.message}`
+          );
+
+          const details = rawText ? `\nDetails: ${rawText}` : "";
+          const hint = suggestions.length ? `\nHint: ${suggestions.join("; ")}` : "";
+          const fallbackNote = shouldFallback
+            ? `\nFallback: Opening your email client now...`
+            : "";
+
+          alert(`${userMessage}${hint}${details}${fallbackNote}`);
+
+          if (shouldFallback) {
+            window.location.href = `mailto:dvennela@berkeley.edu?subject=${subject}&body=${body}`;
+          }
         }
       );
   };

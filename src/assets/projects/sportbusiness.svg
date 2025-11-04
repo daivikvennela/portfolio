@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#0066ff"/>
+  <circle cx="600" cy="315" r="150" fill="#001f4d" stroke="white" stroke-width="8"/>
+  <path d="M550 265 L650 315 L550 365 Z" fill="white"/>
+  <text x="600" y="500" font-family="Arial" font-size="48" fill="white" text-anchor="middle">Sports Business Analytics</text>
+  <text x="600" y="550" font-family="Arial" font-size="32" fill="#001f4d" text-anchor="middle">Python • Data Analysis • Visualization</text>
+</svg> 

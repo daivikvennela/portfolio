@@ -1,30 +1,50 @@
 import React, { Suspense, useEffect, useState } from "react";
-import { Canvas } from "@react-three/fiber";
+import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 
 import CanvasLoader from "../Loader";
 
 const Computers = ({ isMobile }) => {
-  const computer = useGLTF("./desktop_pc/scene.gltf");
+  const car = useGLTF("./future_car_26_gltf/scene.gltf");
+  const [wheelRotation, setWheelRotation] = useState(0);
+
+  // Add rotation animation
+  useFrame((state) => {
+    // Rotate the entire car model
+    car.scene.rotation.y += 0.005; // Adjust speed by changing this value
+  });
 
   return (
     <mesh>
-      <hemisphereLight intensity={0.15} groundColor='black' />
+      <hemisphereLight intensity={0.5} groundColor="#000000" />
       <spotLight
         position={[-20, 50, 10]}
         angle={0.12}
         penumbra={1}
-        intensity={1}
+        intensity={1.5}
         castShadow
         shadow-mapSize={1024}
+        color="#0066ff"
       />
-      <pointLight intensity={1} />
+      <pointLight intensity={1.0} position={[10, 5, 10]} color="#0044aa" />
+      <pointLight intensity={0.5} position={[-10, 5, -10]} color="#000000" />
+      
       <primitive
-        object={computer.scene}
-        scale={isMobile ? 0.7 : 0.75}
-        position={isMobile ? [0, -3, -2.2] : [0, -3.25, -1.5]}
-        rotation={[-0.01, -0.2, -0.1]}
+        object={car.scene}
+        scale={isMobile ? 0.005 : 0.007}
+        position={isMobile ? [0, -5.5, -2.2] : [0, -5.75, -1.5]}
+        rotation={[0, Math.PI * 0.25, 0]}
+        material={{ color: '#ffffff', metalness: 1.0, roughness: 0.05 }}
       />
+      {/* Assuming the wheels are separate meshes within the car model */}
+      {car.scene.children.map((child, index) => {
+        if (child.name.includes("Wheel")) {
+          return (
+            <mesh key={index} geometry={child.geometry} material={child.material} position={child.position} rotation={[wheelRotation, 0, 0]} />
+          );
+        }
+        return null;
+      })}
     </mesh>
   );
 };
@@ -58,7 +78,7 @@ const ComputersCanvas = () => {
       frameloop='demand'
       shadows
       dpr={[1, 2]}
-      camera={{ position: [20, 3, 5], fov: 25 }}
+      camera={{ position: [90, 15, 22], fov: 25 }}
       gl={{ preserveDrawingBuffer: true }}
     >
       <Suspense fallback={<CanvasLoader />}>

@@ -23,12 +23,33 @@ import threejs from "./tech/threejs.svg";
 
 import meta from "./company/meta.png";
 import shopify from "./company/shopify.png";
-import starbucks from "./company/starbucks.png";
+import stanford from "./company/stanford.png";
 import tesla from "./company/tesla.png";
+import hidden from "./company/hidden.svg";
+import eworld from "./company/eworld.svg";
+
+// School logos - using existing icons temporarily to prevent crashes
+import berkeley from "./backend.png";
+import csm from "./mobile.png";
+import canada from "./creator.png";
+import skyline from "./web.png";
+import carlmont from "./backend.png";
 
 import carrent from "./carrent.png";
 import jobit from "./jobit.png";
 import tripguide from "./tripguide.png";
+
+// Role icons
+import fullstack from "./roles/fullstack.png";
+import datascience from "./roles/datascience.png";
+import cloud from "./roles/cloud.png";
+import artist from "./roles/artist.png";
+import video from "./roles/video.png";
+import aiml from "./roles/aiml.png";
+
+// Project covers
+import huapi from "./projects/huapi.svg";
+import sportbusiness from "./projects/sportbusiness.svg";
 
 export {
   logo,
@@ -54,9 +75,25 @@ export {
   threejs,
   meta,
   shopify,
-  starbucks,
+  stanford,
   tesla,
+  hidden,
+  eworld,
+  berkeley,
+  csm,
+  canada,
+  skyline,
+  carlmont,
+  huapi,
+  sportbusiness,
   carrent,
   jobit,
   tripguide,
+  // Role icons
+  fullstack,
+  datascience,
+  cloud,
+  artist,
+  video,
+  aiml,
 };
