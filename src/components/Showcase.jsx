@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { styles } from "../styles";
 import { SectionWrapper } from "../hoc";
@@ -11,11 +11,65 @@ import sagbFeed from "../assets/SampleContent/sagbFeed.mov";
 const VideoCard = ({ videoSrc, title, description, index, badge }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [shouldLoad, setShouldLoad] = useState(false);
   const videoRef = useRef(null);
+  const containerRef = useRef(null);
+
+  // Intersection Observer for lazy loading
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setShouldLoad(true);
+            observer.disconnect();
+          }
+        });
+      },
+      {
+        rootMargin: "100px", // Start loading 100px before entering viewport
+        threshold: 0.1,
+      }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
+  // Auto-play video when it loads
+  useEffect(() => {
+    if (shouldLoad && videoRef.current) {
+      const playVideo = () => {
+        if (videoRef.current) {
+          videoRef.current.play().catch(() => {
+            // Autoplay may be blocked by browser
+          });
+          setIsPlaying(true);
+        }
+      };
+
+      if (videoRef.current.readyState >= 2) {
+        // Video already loaded
+        playVideo();
+      } else {
+        videoRef.current.addEventListener('loadeddata', playVideo);
+        return () => {
+          if (videoRef.current) {
+            videoRef.current.removeEventListener('loadeddata', playVideo);
+          }
+        };
+      }
+    }
+  }, [shouldLoad]);
 
   const handleMouseEnter = () => {
     setIsHovered(true);
-    if (videoRef.current) {
+    if (videoRef.current && !isPlaying) {
       videoRef.current.play().catch(() => {
         // Autoplay was prevented, user can click to play
       });
@@ -45,6 +99,7 @@ const VideoCard = ({ videoSrc, title, description, index, badge }) => {
 
   return (
     <motion.div
+      ref={containerRef}
       variants={fadeIn("up", "spring", index * 0.2, 0.75)}
       className="relative group"
       onMouseEnter={handleMouseEnter}
@@ -70,16 +125,31 @@ const VideoCard = ({ videoSrc, title, description, index, badge }) => {
 
           {/* Video Container */}
           <div className="relative w-full aspect-[9/16] rounded-xl overflow-hidden bg-black/50 mb-4">
-            <video
-              ref={videoRef}
-              src={videoSrc}
-              className="w-full h-full object-cover"
-              loop
-              muted
-              playsInline
-              preload="metadata"
-              onClick={togglePlay}
-            />
+            {shouldLoad ? (
+              <video
+                ref={videoRef}
+                src={videoSrc}
+                className="w-full h-full object-cover"
+                loop
+                muted
+                playsInline
+                autoPlay
+                preload="none"
+                onClick={togglePlay}
+                onLoadedData={() => {
+                  // Auto-play when loaded
+                  if (videoRef.current) {
+                    videoRef.current.play().catch(() => {
+                      // Autoplay may be blocked by browser
+                    });
+                  }
+                }}
+              />
+            ) : (
+              <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#0066ff]/20 to-[#00d4ff]/20">
+                <div className="w-12 h-12 border-4 border-[#0066ff]/50 border-t-[#0066ff] rounded-full animate-spin" />
+              </div>
+            )}
             
             {/* Play/Pause Overlay */}
             {!isPlaying && (

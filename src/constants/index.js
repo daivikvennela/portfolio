@@ -198,7 +198,7 @@ const projects = [
   {
     name: "HU Logo Analysis API",
     description:
-      "A FastAPI-based service that processes company logos and analyzes their suitability for professional use. Integrates with OpenAI's API for image analysis and provides detailed recommendations for logo usage.",
+      "A FastAPI-based service that processes company logos and analyzes their suitability for professional use. Integrates with OpenAI's API for image analysis and provides detailed recommendations for logo usage. Deployed on Microsoft Azure with cloud infrastructure.",
     tags: [
       {
         name: "fastapi",
@@ -236,6 +236,90 @@ const projects = [
     ],
     image: sportbusiness,
     source_code_link: "https://github.com/daivikvennela/sportBusinessProject",
+  },
+  {
+    name: "Generative AI PDF Processor",
+    description:
+      "A powerful Generative AI tool built with FastAPI that processes millions of PDFs for custom keyword extraction using Google Gemini. Features Streamlit POC interface demonstrated to executive board. Handles large-scale document processing efficiently.",
+    tags: [
+      {
+        name: "fastapi",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "gemini",
+        color: "green-text-gradient",
+      },
+      {
+        name: "streamlit",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: eworld,
+    source_code_link: "https://github.com/daivikvennela",
+  },
+  {
+    name: "3D Developer Portfolio",
+    description:
+      "An immersive 3D portfolio website built with React, Three.js, and React Three Fiber. Features interactive 3D models, smooth animations with Framer Motion, and responsive design. Showcases projects, experience, and skills in an engaging way.",
+    tags: [
+      {
+        name: "react",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "threejs",
+        color: "green-text-gradient",
+      },
+      {
+        name: "vite",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: carrent,
+    source_code_link: "https://github.com/daivikvennela/portfolio",
+  },
+  {
+    name: "AI-Powered Social Media Feeds",
+    description:
+      "Curated Instagram feed generation using AI-driven content creation strategies. Demonstrates expertise in social media marketing, digital art generation, and content optimization. Features modern aesthetics and engagement-driven design.",
+    tags: [
+      {
+        name: "ai",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "marketing",
+        color: "green-text-gradient",
+      },
+      {
+        name: "content-creation",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: jobit,
+    source_code_link: "https://github.com/daivikvennela",
+  },
+  {
+    name: "Data Science Projects",
+    description:
+      "Various data science projects including machine learning models, statistical analysis, and data visualization. Built with Python, pandas, scikit-learn, and visualization libraries. Focuses on deriving actionable insights from complex datasets.",
+    tags: [
+      {
+        name: "python",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "machine-learning",
+        color: "green-text-gradient",
+      },
+      {
+        name: "data-science",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: tripguide,
+    source_code_link: "https://github.com/daivikvennela",
   },
 ];
 
